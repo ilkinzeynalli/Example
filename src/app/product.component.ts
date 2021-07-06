@@ -17,32 +17,13 @@ export class ProductComponent {
     this.product = this.productRepository.getProductById(1);
   }
 
-  getClasses(id: number) {
-    let product = this.productRepository.getProductById(id);
 
-    return (product.price ?? 0) < 2000
-      ? 'bg-primary'
-      : 'bg-secondary' + ' m-2 p-2';
+  onButtonClick($event:any){
+    $event.stopPropagation();
+    console.log($event.srcElement.name);
   }
 
-  getClassesMap(id: number): Object {
-    let product = this.productRepository.getProductById(id);
-
-    return {
-      'bg-primary': (product.price ?? 0) <= 2000,
-      'bg-secondary': (product.price ?? 0) > 2000,
-    };
-  }
-
-  color: string = 'green';
-  fontSize: string = "50px";
-
-  getStyles(id: number): Object{
-    let product = this.productRepository.getProductById(id);
-
-    return {
-        // color: (product.price ?? 0) < 2000 ? 'green':'red',
-        fontSize: product.name=='Product 2' ? '50px':'25px'
-    };
+  onDivClicked($event: MouseEvent){
+    console.log("Div was clicked")
   }
 }

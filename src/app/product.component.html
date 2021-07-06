@@ -1,14 +1,4 @@
-<div  class="text-white" [class]="{'bg-primary': (product.price ?? 0) <= 2000}">
-    Katologdaki <span style='color:red' [style.fontSize]="fontSize">ilk urun</span> {{ productRepository.getProductById(1).name }}
-</div>
-
-<div class="text-white" [class]="getClasses(2)">
-    Katologdaki <span style="color:green" [ngStyle]="getStyles(2)">ikinci urun</span> {{ productRepository.getProductById(1).name }}
-</div>
-
-<button class="btn btn-primary" [class.disabled]="disabled">Elave et</button>
-
-
-<div [ngClass]="getClassesMap(3)">
-    Katologdaki ilk urun {{ productRepository.getProductById(3).name }}
+<div (click)="onDivClicked($event)" style="height: 500px; width:500px;background-color: red;">
+    <button name="btn1" (click)="onButtonClick($event)">Button 1</button>
+    <button name="btn2" (click)="onButtonClick($event)">Button 2</button>
 </div>
