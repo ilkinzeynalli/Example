@@ -1,24 +1,21 @@
 import { Component } from '@angular/core';
-import { Product } from './models/product.model';
-import { ProductRepository } from './models/repository.model';
 
 @Component({
   selector: 'app',
-  templateUrl: './product.component.html',
+  template: `
+      <input [(ngModel)]="email"  (keyup.enter)="onKeyUp()" />
+      {{email}}
+  `,
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent {
-  productRepository: ProductRepository;
-  product: Product;
-  disabled: boolean = true;
 
-  constructor() {
-    this.productRepository = new ProductRepository();
-    this.product = this.productRepository.getProductById(1);
-  }
+  email:string = "ilkin@hotmail.com";
 
-  onKeyUp(name: string){
-    console.log(name);
+  constructor() { }
+
+  onKeyUp(){
+    console.log(this.email);
     // if($event.keyCode === 13){
     //   console.log($event.target.value);
     // }
