@@ -17,13 +17,10 @@ export class ProductComponent {
     this.product = this.productRepository.getProductById(1);
   }
 
-
-  onButtonClick($event:any){
-    $event.stopPropagation();
-    console.log($event.srcElement.name);
-  }
-
-  onDivClicked($event: MouseEvent){
-    console.log("Div was clicked")
+  onKeyUp(name: string){
+    console.log(name);
+    // if($event.keyCode === 13){
+    //   console.log($event.target.value);
+    // }
   }
 }

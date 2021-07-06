@@ -1,4 +1,1 @@
-<div (click)="onDivClicked($event)" style="height: 500px; width:500px;background-color: red;">
-    <button name="btn1" (click)="onButtonClick($event)">Button 1</button>
-    <button name="btn2" (click)="onButtonClick($event)">Button 2</button>
-</div>
+<input #name (keyup.enter)="onKeyUp(name.value)" />
