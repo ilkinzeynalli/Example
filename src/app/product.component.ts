@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './models/product.model';
 import { ProductRepository } from './models/repository.model';
 
 @Component({
@@ -7,17 +8,11 @@ import { ProductRepository } from './models/repository.model';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent {
-
   public model:ProductRepository;
-  productName: string;
+  products:Product[];
 
   constructor() { 
-    this.model = new ProductRepository()
-    this.productName = this.model.getProductById(2).name ?? "";
-
+    this.model = new ProductRepository();
+    this.products = this.model.getProducts();
   }
-
-  title:string = "Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli ";
-
-
 }

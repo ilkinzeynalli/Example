@@ -1,13 +1,11 @@
-<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductsCount()">
-    <span *ngSwitchCase="0"> There are no products</span>
-    <span *ngSwitchCase="1"> There are one product</span>
-    <span *ngSwitchCase="2">There are two products</span>
-    <span *ngSwitchDefault>There are many products</span>
-</div>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let product of products; index as i; first as isFirst;last as isLast; even as isEven;odd as isOdd; count as Count">
+       <span *ngIf="isFirst">Item count {{Count}}</span> <br/>
+       {{i+1}} - {{product.name}} 
+       <span *ngIf="isFirst" class="badge bg-primary"> Ilk setir</span>
+       <span *ngIf="isLast" class="badge bg-secondary">  Sonuncu setir</span>
+       <span *ngIf="isEven" class="badge bg-info"> Cift satir</span>
+       <span *ngIf="isOdd" class="badge bg-danger"> Tek satir</span>
 
-<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductById(4).name">
-    <span *ngSwitchCase="'Product 1'"> Product 1</span>
-    <span *ngSwitchCase="productName"> Product 2</span>
-    <span *ngSwitchCase="'Product 3'"> Product 3</span>
-    <span *ngSwitchDefault>Default product</span>
-</div>
+    </li>
+</ul>
