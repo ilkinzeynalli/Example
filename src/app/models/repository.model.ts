@@ -15,4 +15,8 @@ export class ProductRepository{
     getProductById(id:Number): Product{
         return this.products.filter(p=>p.id === id)[0];
     }
+
+    getProductsCount(): number{
+        return this.products.length;
+    }
 }

@@ -9,9 +9,12 @@ import { ProductRepository } from './models/repository.model';
 export class ProductComponent {
 
   public model:ProductRepository;
+  productName: string;
 
   constructor() { 
     this.model = new ProductRepository()
+    this.productName = this.model.getProductById(2).name ?? "";
+
   }
 
   title:string = "Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli ";
