@@ -1,11 +1,8 @@
+<button type="button" class="btn btn-primary" (click)="addProduct()">Add</button>
 <ul class="list-group">
-    <li class="list-group-item" *ngFor="let product of products; index as i; first as isFirst;last as isLast; even as isEven;odd as isOdd; count as Count">
-       <span *ngIf="isFirst">Item count {{Count}}</span> <br/>
-       {{i+1}} - {{product.name}} 
-       <span *ngIf="isFirst" class="badge bg-primary"> Ilk setir</span>
-       <span *ngIf="isLast" class="badge bg-secondary">  Sonuncu setir</span>
-       <span *ngIf="isEven" class="badge bg-info"> Cift satir</span>
-       <span *ngIf="isOdd" class="badge bg-danger"> Tek satir</span>
-
+    <li class="list-group-item" *ngFor="let product of products">
+      {{product.name}}
+      <button type="button" class="btn btn-warning m-2" (click)="updateProduct(product)">update</button>
+      <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
     </li>
 </ul>

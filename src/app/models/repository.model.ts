@@ -19,4 +19,14 @@ export class ProductRepository{
     getProductsCount(): number{
         return this.products.length;
     }
+
+    addProduct(product: Product){
+        this.products.push(product);
+    }
+
+    deleteProduct(product: Product){
+        let index = this.products.indexOf(product);
+
+        this.products.splice(index,1);
+    }
 }
