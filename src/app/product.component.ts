@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
+import { ProductRepository } from './models/repository.model';
 
 @Component({
   selector: 'app',
-  template: `<h2>{{title | summary: 2}}</h2>`,
+  templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent {
 
-  constructor() { }
+  public model:ProductRepository;
+
+  constructor() { 
+    this.model = new ProductRepository()
+  }
 
   title:string = "Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli Ilkin Zeynalli ";
 
