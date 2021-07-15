@@ -16,15 +16,4 @@ export class ProductComponent {
     this.products = this.model.getProducts();
   }
 
-  addProduct(){
-    this.model.addProduct(new Product(2,"Product 2",2000,"Description 2","2.jpg"));
-  }
-
-  deleteProduct(product: Product){
-    this.model.deleteProduct(product);
-  }
-
-  updateProduct(product: Product){
-    product.name = "updated";
-  }
 }
