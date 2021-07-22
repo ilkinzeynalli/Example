@@ -29,4 +29,15 @@ export class AdminProductComponent implements OnInit {
   editProduct(product: Product){
     this.selectedProduct = product;
   }
+
+  save(){
+    const p = this.productRepository.getProductById(this.selectedProduct.id);
+
+    p.name = this.selectedProduct.name;
+    p.price = this.selectedProduct.price;
+    p.imageUrl = this.selectedProduct.imageUrl;
+    p.description = this.selectedProduct.description;
+
+    this.selectedProduct = null!;
+  } 
 }
