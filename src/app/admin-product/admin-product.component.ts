@@ -11,6 +11,7 @@ export class AdminProductComponent implements OnInit {
 
   products:Product[];
   productRepository: ProductRepository;
+  selectedProduct: Product;
 
   constructor() { 
     this.productRepository = new ProductRepository();
@@ -20,4 +21,12 @@ export class AdminProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+ 
+  checkSelectedClass(product: Product){
+    return this.selectedProduct == product;
+  }
+
+  editProduct(product: Product){
+    this.selectedProduct = product;
+  }
 }

@@ -1,27 +1,56 @@
+
+
 <div class="row m-5">
-    <table class="table table-sm table-bordered w-50">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th style="width: 150px;"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let product of products">
-                <td>{{product.id}}</td>
-                <td>
-                    <img [src]="'../assets/img/' + product.imageUrl" width="80" />
-                </td>
-                <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>
-                    <button class="btn btn-danger m-2">Delete</button>
-                    <button class="btn btn-primary">Edit</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="col-md-6">
+        <div class="bg-info text-white text-center p-2" *ngIf="selectedProduct">
+            Selected product : {{selectedProduct.name}}
+        </div>
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th style="width: 150px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products"
+                    [class.bg-info]="checkSelectedClass(product)"> 
+                    <td>{{product.id}}</td>
+                    <td>
+                        <img [src]="'../assets/img/' + product.imageUrl" width="80" />
+                    </td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>
+                        <button class="btn btn-danger m-2">Delete</button>
+                        <button class="btn btn-primary" (click)="editProduct(product)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  <div class="col-md-6">
+      <h3>Product Form </h3>
+      <div class="form-group">
+        <label for="">Product Name</label>
+        <input #pName [value]="selectedProduct?.name" type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="">Price</label>
+        <input #pPrice [value]="selectedProduct?.price" type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="">Image Url</label>
+        <input #pImageUrl [value]="selectedProduct?.imageUrl"  type="text" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="">Description</label>
+        <input #pDescription [value]="selectedProduct?.description" type="text" class="form-control"/>
+      </div>
+
+      <button class="btn btn-success mt-3" > Save </button>
+  </div>
 </div>
