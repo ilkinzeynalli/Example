@@ -31,7 +31,7 @@ export class AdminProductComponent implements OnInit {
   }
 
   save(){
-    const p = this.productRepository.getProductById(this.selectedProduct.id);
+    const p = this.productRepository.getProductById(this.selectedProduct.id || 0);
 
     p.name = this.selectedProduct.name;
     p.price = this.selectedProduct.price;

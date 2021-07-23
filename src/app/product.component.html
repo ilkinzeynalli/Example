@@ -1,1 +1,66 @@
-<admin-product></admin-product>
+<!-- <admin-product></admin-product> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <div class="m-3">
+                <div class="bg-danger text-white m-2 p-2" *ngIf="formSubmitted && form.invalid">
+                    Form submit ederken bir hata olustu.
+                    <ul>
+                        <li *ngFor="let error of getFormValidationErrors(form)">{{error}}</li>
+                    </ul>
+                </div>
+                <div class="bg-info m-2 p-2">
+                   {{newProduct | json}}
+                   {{formSubmitted}}
+                </div>
+                <form #form="ngForm" (ngSubmit)="submitForm(form)">
+                    <h3>Product Form </h3>
+                    <hr/>
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input required minlength="3" pattern="^[A-Za-z ]+$" type="text" class="form-control" [(ngModel)]="newProduct.name" 
+                         #name="ngModel"  name="name" autocomplete="off" >
+                         <div class="alert alert-danger" *ngIf="(formSubmitted || name.dirty) && name.invalid">
+                            <p *ngFor="let error of getValidationErrors(name)">{{error}}</p>
+                         </div>
+                         <!-- <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+                            <p *ngIf="name.errors?.required">Name is required.</p>
+                            <p *ngIf="name.errors?.pattern">Only character and space</p>
+                            <p *ngIf="name.errors?.minlength">Mininum 3 character</p>
+                         </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Price</label>
+                        <input required type="text" class="form-control" [(ngModel)]="newProduct.price"
+                         #price="ngModel" name="price">
+                         <div class="alert alert-danger" *ngIf="(formSubmitted || price.dirty) && price.invalid">
+                            <p *ngFor="let error of getValidationErrors(price)">{{error}}</p>
+                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea required type="text" class="form-control" [(ngModel)]="newProduct.description" 
+                         #description="ngModel" name="description"></textarea>
+                         <div class="alert alert-danger" *ngIf="(formSubmitted || description.dirty) && description.invalid">
+                            <p *ngFor="let error of getValidationErrors(description)">{{error}}</p>
+                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Image Url</label>
+                        <input required type="text" class="form-control" [(ngModel)]="newProduct.imageUrl"
+                         #imageUrl="ngModel" name="imageUrl">
+                         <div class="alert alert-danger" *ngIf="(formSubmitted || imageUrl.dirty) && imageUrl.invalid">
+                            <p *ngFor="let error of getValidationErrors(imageUrl)">{{error}}</p>
+                         </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary mt-3 "
+                        [disabled]="formSubmitted && form.invalid"
+                        [class.bg-secondary]="formSubmitted && form.invalid">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
